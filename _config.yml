@@ -1,0 +1,17 @@
+# Site settings
+title: derrickorama
+tagline: Splish-splashing in the mind of a web dev.
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: ""
+url: "http://derrickorama.com"
+
+twitter_username: derrickorama
+github_username:  derrickorama
+gplus_username: DerrickGall
+
+# Build settings
+markdown: kramdown
+highlighter: rouge

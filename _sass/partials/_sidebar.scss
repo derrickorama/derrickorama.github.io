@@ -1,0 +1,27 @@
+.sidebar {
+  flex: 1;
+  min-height: 504px; // for background image
+  padding: 20px;
+  font-size: 12px;
+  background: transparent url(../images/sidebar-bg.jpg) 0 0 no-repeat;
+
+  .social-media-list {
+    list-style: none;
+    padding: 0;
+
+    .icon {
+      float: left;
+      margin-right: 5px;
+      width: 20px;
+    }
+
+    li {
+      clear: both;
+      line-height: 20px;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}
