@@ -2,6 +2,8 @@
 layout: post
 title:  "Cross-language testing with REST and JSON"
 date:   2014-09-25 22:24:24
+redirect_from:
+  - /programming/2014/09/25/cross-language-testing-with-rest-and-json/
 ---
 I’ve been using Node for some time now in a production environment. I love Node & JavaScript in general… but it has got some bad memory leak issues. I found that even the simplest of scripts has memory leaks (e.g. an HTTP server, a socket server, etc.). It’s not a big deal most of the time, but when you have a huge application and a long running process, your application eventually grinds to a halt.
 

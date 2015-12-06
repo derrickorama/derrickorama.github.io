@@ -11,3 +11,6 @@ gplus_username: DerrickGall
 # Build settings
 markdown: kramdown
 highlighter: rouge
+
+gems:
+  - jekyll-redirect-from
