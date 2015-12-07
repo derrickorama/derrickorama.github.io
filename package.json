@@ -1,0 +1,20 @@
+{
+  "name": "derrickorama.com",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derrickorama/derrickorama.github.io.git"
+  },
+  "author": "Derrick Gall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/derrickorama/derrickorama.github.io/issues"
+  },
+  "homepage": "https://github.com/derrickorama/derrickorama.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-minify-css": "^1.2.2",
+    "gulp-rename": "^1.2.2"
+  }
+}
