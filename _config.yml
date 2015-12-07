@@ -14,3 +14,4 @@ highlighter: rouge
 
 gems:
   - jekyll-redirect-from
+  - jekyll-press
