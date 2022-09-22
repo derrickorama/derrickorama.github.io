@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Basic Mapbox Isochrone &amp; Matrix API Example</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafafa">
+  <link rel="stylesheet" href="prism.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+</head>
+
+<body>
+  <div class="container">
+    <div class="is-center is-full-screen">
+      <div class="card is-full-width">
+        <h1>Basic Mapbox Isochrone &amp; Matrix API Example</h1>
+        <div style="margin-bottom: 16px">
+          <label for="token">Mapbox API Token</label>
+          <p><input id="token" type="text"></p>
+        </div>
+        <div class="card" style="margin-bottom: 20px; padding-bottom: 20px">
+          <h4>Isochrone API</h4>
+          <p>
+            <label for="isochroneCoords">Coordinates</label>
+            <input id="isochroneCoords" type="text" value="-77.05394870073471,39.04569435093961">
+          </p>
+          <button id="getIsochrone">Get Isochrone</button>
+          <hr class="bg-light" style="margin-top: 16px">
+          <div>Status: <span id="isochroneStatus">
+            <span class="text-light" style="font-style: italic">Send request first</span>
+          </span></div>
+          <pre style="max-height: 300px; overflow: auto"><code id="isochroneResults"></code></pre>
+        </div>
+        <div class="card" style="padding-bottom: 20px">
+          <h4>Matrix API Response</h4>
+          <p>
+            <label for="matrixCoords">Coordinates</label>
+            <textarea id="matrixCoords" cols="30" rows="10">-117.532791,33.868670
+-117.537855,33.868306
+-117.543622,33.868492
+-117.548963,33.88147
+-117.488856,33.895093
+-117.486668,33.776047</textarea>
+          </p>
+          <button id="getMatrix">Get Matrix</button>
+          <hr class="bg-light" style="margin-top: 16px">
+          <div>Status: <span id="matrixStatus">
+            <span class="text-light" style="font-style: italic">Send request first</span>
+          </span></div>
+          <pre style="max-height: 300px; overflow: auto"><code id="matrixResult"></code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function getIsochrone() {
+      const token = document.getElementById('token').value;
+      const coordinates = document.getElementById('isochroneCoords').value;
+      const response = await fetch(`https://api.mapbox.com/isochrone/v1/mapbox/driving/${coordinates}?access_token=${token}&contours_minutes=5%2C15%2C30%2C60&denoise=0.5&polygons=true`, { cache: 'no-cache' });
+      document.getElementById('isochroneStatus').innerText = response.status;
+      document.getElementById('isochroneResults').innerHTML = Prism.highlight(JSON.stringify(await response.json()), Prism.languages.javascript, 'javascript');
+    }
+    
+    async function getMatrix() {
+      const token = document.getElementById('token').value;
+      const coordinates = document.getElementById('matrixCoords').value.split('\n').map((line) => line.trim()).join(';');
+      const response = await fetch(`https://api.mapbox.com/directions-matrix/v1/mapbox/driving-traffic/${coordinates}?access_token=${token}&annotations=duration%2Cdistance&destinations=0&sources=1;2;3;4;5`, { cache: 'no-cache' });
+      document.getElementById('matrixStatus').innerText = response.status;
+      document.getElementById('matrixResult').innerHTML = Prism.highlight(JSON.stringify(await response.json()), Prism.languages.javascript, 'javascript');
+    }
+
+    document.getElementById('getIsochrone').addEventListener('click', () => {
+      getIsochrone();
+    });
+
+    document.getElementById('getMatrix').addEventListener('click', () => {
+      getMatrix();
+    });
+  </script>
+
+  <script src="prism.min.js"></script>
+</body>
+
+</html>
